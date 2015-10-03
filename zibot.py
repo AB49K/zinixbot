@@ -155,6 +155,7 @@ while 1:
             s.send('NICK '+ "" +'\n')
         if item.find('PRIVMSG')!=-1: #calls a parsing function
             parsemsg(item)
+            time.sleep(1)
  
         if (item.find("PING") != -1 ): #if server pings then pong
             item=item.rstrip() #remove trailing 'rn'
