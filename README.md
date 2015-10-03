@@ -33,7 +33,7 @@ bite my shiny gnu ass!
 
 __.linus__
 
-Bacl to functions with a somewhat real purpose: this one outputs Linus Torvald's famous introductory speech to the Linux kernel.
+Back to functions with a somewhat real purpose: this one outputs Linus Torvald's famous introductory speech to the Linux kernel.
 
 __.dank, .dankmeme, .dankswag, .doritotini__
 
