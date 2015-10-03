@@ -135,6 +135,8 @@ def parsemsg(msg):
                     s.send("privmsg " + info[2] +" invalid option" + '\n')
             if cmd[0] == 'doritotini':
                 s.send("privmsg " + info[2] +" http://i.imgur.com/yXfaopc.jpg" + '\n')
+            if cmd[0] == 'vimlyfe':
+            	s.send("privmsg " + info[2] +" Bitch, my portfolio includes multiple commits to the Linux kernel, only a quarter of which were pulled, including two which were pulled by Linus himself. On top of that, I have devoted an unheard of amount of time to working on the Coreboot project. And my LoC count nearly exceeds half that of Minecraft's (~150,000 for those counting). While you spent your dwindling days in Discrete Maths IIVIX: Session WhatEverTheFuck-and-four-quarters with your thumbs up your arse, I was busy writing the very code on which your computer most likely now runs and thrives. If I felt like it, I could easily cripple the kernel to panic on your machine, and your machine only. Trust me, Kid. I can reck your shit anywhere, anytime. But, lucky you, I'm a generous and forgiving code God; I'll let your precious Gentoo box live... for now. I have no advice to give you, because it's already too late: you've fallen for the college scam and are now helplessly in it's eternal clutches. All you can do now is watch as I gracefully steal all your job offerings, fuck the office bitches, and sit on a fat six-figure paycheck; while you jerk your tiny dick behind the BestBuy Geek Squad service counter, and suck dicks for Apple products. Enjoy guzzling that ropey cum, CS cuck." + '\n')
     except IndexError:
         return 0
     #if "\xe3" in msgpart:
