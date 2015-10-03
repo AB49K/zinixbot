@@ -1,5 +1,5 @@
 # zinixbot
-An irc bot unixbird and i made for #linuxmasterrace.
+An IRC bot unixbird and I made for #linuxmasterrace.
 
 ### Commands:
 
