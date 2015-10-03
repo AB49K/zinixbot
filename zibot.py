@@ -59,7 +59,7 @@ def parsemsg(msg):
 
         #if msgpart[0] == ' ':
             #print("not today")
-        if re.search('.*(which|what) (distro|distribution).*(should|best| use).*', re.sub('[\[\]\'?,]', '', msgpart.lower())) and re.search('^((?!worst).)*$', re.sub('[\[\]\'?,]', '', msgpart.lower())):
+        if re.search('.*(which|what) (distro|distribution).*(should|best| use).*', re.sub('[\[\]\'?,]', '', msgpart.lower())) and re.search('^((?!worst| ?!not).)*$', re.sub('[\[\]\'?,]', '', msgpart.lower())):
             s.send("privmsg " + info[2] +" :ARCHARCHARCHARCH AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARCH"+'\n')
         if msgpart[0]=='.': #Treat all messages starting with '`' as command 
             cmd=msgpart[1:].split(' ') 
