@@ -11,11 +11,11 @@ import urllib2
 global rswitch
 rswitch = True
 i = 0
-HOST = 'irc.snoonet.org'  # host server
+HOST = sys.argv[1]  # host server
 PORT = 6667
-NICK = 'zibot'
-IDENT = 'zibot'
-REALNAME = 'zibot'
+NICK = sys.argv[2]
+IDENT = sys.argv[2]
+REALNAME = sys.argv[2]
 OWNER = 'zinn'  # the person who owns this
 CHANNELINIT = '#linuxmasterrace'
 readbuffer = ''
@@ -165,7 +165,7 @@ while 1:
             s.send('JOIN #lmrdungeonworld'+'\n')
             s.send('JOIN #ayyylmao'+'\n')
             s.send('JOIN #secretlinuxchannel'+'\n')
-            s.send('NICK '+ "zinixbot" +'\n')
+            s.send('NICK '+ sys.argv[3] +'\n')
 
         if item.find('PRIVMSG') != -1:  # calls a parsing function
             parsemsg(item)

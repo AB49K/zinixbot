@@ -70,4 +70,9 @@ Used to toggle zrolling.
 
 
 
-### But there are more not listed here and not in the published code you must find for yourself! (Mostly inside jokes)
+The python file now takes arguments from the command line. They are:
+
+* 0: Password
+* 1: server
+* 2: nick
+* 3: nick to switch to after auth, usually the same
