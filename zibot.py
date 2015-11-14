@@ -11,11 +11,11 @@ import urllib2
 global rswitch
 rswitch = True
 i = 0
-HOST = sys.argv[1]  # host server
+HOST = sys.argv[2]  # host server
 PORT = 6667
-NICK = sys.argv[2]
-IDENT = sys.argv[2]
-REALNAME = sys.argv[2]
+NICK = sys.argv[3]
+IDENT = sys.argv[3]
+REALNAME = sys.argv[3]
 OWNER = 'zinn'  # the person who owns this
 CHANNELINIT = '#linuxmasterrace'
 readbuffer = ''
@@ -158,14 +158,14 @@ while 1:
     for item in line:
         if item.find('Welcome') != -1:  # welcome message
             print('you can do it')
-            s.send('privmsg ' + 'NickServ' + ' :IDENTIFY ' + sys.argv[0] + '\r\n')
+            s.send('privmsg ' + 'NickServ' + ' :IDENTIFY ' + sys.argv[1] + '\r\n')
             s.send('JOIN ' + CHANNELINIT + '\n')  # joins channel
             #s.send('USER '+ ""  +' '+HOST+' bla :'+REALNAME+'\n')
             s.send('NICK ' + "" + '\n')
             s.send('JOIN #lmrdungeonworld'+'\n')
             s.send('JOIN #ayyylmao'+'\n')
             s.send('JOIN #secretlinuxchannel'+'\n')
-            s.send('NICK '+ sys.argv[3] +'\n')
+            s.send('NICK '+ sys.argv[4] +'\n')
 
         if item.find('PRIVMSG') != -1:  # calls a parsing function
             parsemsg(item)

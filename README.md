@@ -72,7 +72,8 @@ Used to toggle zrolling.
 
 The python file now takes arguments from the command line. They are:
 
-* 0: Password
-* 1: server
-* 2: nick
-* 3: nick to switch to after auth, usually the same
+* 0: Filename, this never changes, but the name of the script is passed as the first argument
+* 1: Password
+* 2: server
+* 3: nick
+* 4: nick to switch to after auth, usually the same
