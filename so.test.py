@@ -18,10 +18,12 @@ def stackoverflow(msg):
         for line in soq:
             if "Q:" in line:
                 print(line)
+                break
         page = urllib2.urlopen(req)
         soex = page.readlines()
         line = ['']
         for line in soex:
             if "excerpt" in line:
                 print(line)
+                break
 stackoverflow(msg)
