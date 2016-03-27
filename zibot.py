@@ -23,6 +23,7 @@ rekt = ['Rekt', 'Really Rekt', 'Tyrannosaurus Rekt', 'Cash4Rekt.com', 'Grapes of
         'The Shawshank Rektemption', 'The Rektfather', 'The Rekt Knight', 'Fiddler on the Rekt', 'The Rekt Files', 'The Good, the Bad, and The Rekt', 'Forrekt Gump', 'The Silence of the Rekts', 'The Green Rekt', 'Gladirekt', 'Spirekted Away', 'Terminator 2: Rektment Day', 'The Rekt Knight Rises', 'The Rekt King', 'REKT-E', 'Citizen Rekt', 'Requiem for a Rekt', 'REKT TO REKT ass to ass', 'Star Wars: Episode VI - Return of the Rekt', 'Braverekt', 'Batrekt Begins', '2001: A Rekt Odyssey', 'The Wolf of Rekt Street', 'Rekt\'s Labyrinth', '12 Years a Rekt', 'Gravirekt', 'Finding Rekt', 'The Arekters', 'There Will Be Rekt', 'Christopher Rektellston', 'Hachi: A Rekt Tale', 'The Rekt Ultimatum', 'Shrekt', 'Rektal Exam', 'Rektium for a Dream', 'The Hunt for Rekt October', 'Oedipus rekt']
 #msgpart = ''
 
+shaggy = ['imma rape you make you  gay lol', 'imma rape you make you gay lol', 'you can go to bed now on your own or smell this rag....', 'SusWombat: is never right', 'why am i still typing', 'was a shock to see bare ass lol', 'its like NO, i\'m LAZY LAZY LA-ZY', 'ShaggyTwoDope thinks based on some questions Winter_Fox asks... hes making a bomb or something', 'they already proved they dont mind white stuff covering their face', 'what\'d i tell you about playing cops and robbers without protection', 'sounds like AWindowsKrill jammed his penis in the door again', 'my butthole was bleeding and everything', 'its not like i said, "i like raping turtles and killing hobos"', 'i always tell her the gun wasnt real', 'bios says.. idc bitch anime is on', 'girl is that ass gpl\'d, cause you gotta share that source', 'there is an orgy inside me at all times', '#anarchy', 'some people say hookers with no teeth are terrible but thats a matter of opinion', 'Show me on the hard drive where he touched you', 'wait til they see my dict', 'most of my scars are mental ones', 'freak anal midgets?', 'don\'t worry we all go through a gay phase', 'PureTryOut hates this guy', 'slow or fast, things worth doing are things worth doing, unless its for the dutch.', '(seen enough naked dudes, so nothing shocked me)', 'the dude was eating his own shit', 'if a girl aint down to play some mario, eat some snacks |  aint down with shaggy', 'they use linux just to use wine', 'i never EVER want to smell garlic or put my fist in a cow again unless its for fun', 'Brig once killed a homeless man using the broken part of a spoon he stole from a fast food place.', 'like some random hot girl is gonna get a arch linux turses joke lol', 'its only wrong if she wakes up...', 'ever wonder if the percent of flammable goats is higher than linux users', 'i wonder, how hard would you need to rub two people together to get fire', 'no is just japanese for harder', 'send me an email, shaggy@horsefucker.org', 'best time i had was with a old dude, he was just great lol', 'i return', 'i return <ShaggyTwoDope> so wet :-(', 'i have no filter lol', 'be like "here is your 10 inch item you ordered" printed on the package', 'Chewbacca Gets Sucked Off By Two Female Storm ...', 'every joke is better with a little girl lol', 'you think i have to like you, and you like me?', 'they put cold things in my butt, butt, butt', 'TeenageThowawayV2: good thing my dungeon has no windows', 'TeenageThrowAwayV2: good thing my dungeon has no windows <ShaggyTwoDope> now walk this way..', 'put the lotion on', 'call me a fuckwas', 'i\'d kill a hooker with a wet tire for some crackers...', 'i went full force on her little body', 'no penis for me. no sir...', 'its other peoples porn i dig', 'gotta say, not the first time seeing inside of another mans ass... thanks internet', 'ive had more sex with mentally unstable girls than most people will']
 
 s = socket.socket()
 s.connect((HOST, PORT))
@@ -49,6 +50,31 @@ def distro(msg):
             return distro + ' - ' + url
         else:
             return "Did not find distro named %s." % a
+
+def stackoverflow(msg):
+    found = False
+    message = ""
+    sourl = "http://stackoverflow.com/"
+    if msg == "":
+        return "Please give a query"
+    else:
+        a = msg[:15]
+        site = (sourl + "search?q=" + a)
+        hdr = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib2.Request(site,headers=hdr)
+        page = urllib2.urlopen(req)
+        soq = page.readlines()
+        for line in soq:
+            if "Q:" in line:
+                message += line.rstrip('\n')
+                break
+        for line in soq:
+            if found:
+              message += re.sub('<.*>', '', line).rstrip('\n')
+              break
+            if "excerpt" in line:
+                found = True 
+        return message.rstrip('\n')
 
 
 def parsemsg(msg):
@@ -86,6 +112,11 @@ def parsemsg(msg):
                     s.send("privmsg #linuxmasterrace :" + distro("") + '\n')
                 else:
                     s.send("privmsg #linuxmasterrace :" + distro(cmd[1]) + '\n')
+            if cmd[0] == 'so':
+                if len(cmd) == 1:
+                    s.send("privmsg " + info[2] + " :" + stackoverflow("") + '\n')
+                else:
+                    s.send("privmsg " + info[2] + " :" + stackoverflow(cmd[1]) + '\n')
             if cmd[0] == 'peasantry':
                 s.send("privmsg #linuxmasterrace :bite my shiny gnu ass!" + '\n')
             if cmd[0] == 'linus':
@@ -100,6 +131,9 @@ def parsemsg(msg):
             if cmd[0] == 'rekt':
                 random.seed()
                 s.send("privmsg " + info[2] + " :" + rekt[random.randrange(74)] + '\n')
+            if cmd[0] == 'shaggy':
+                random.seed()
+                s.send("privmsg " + info[2] + " :" + "<ShaggyTwoDope> " + shaggy[random.randrange(56)] + '\n')
             if cmd[0] == 'shrug':
                 s.send("privmsg " + info[2] + " :¯\_(ツ)_/¯" + '\n')
             if cmd[0] == 'rolecall':
