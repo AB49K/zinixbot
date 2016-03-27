@@ -51,6 +51,31 @@ def distro(msg):
         else:
             return "Did not find distro named %s." % a
 
+def stackoverflow(msg):
+    found = False
+    message = ""
+    sourl = "http://stackoverflow.com/"
+    if msg == "":
+        return "Please give a query"
+    else:
+        a = msg[:15]
+        site = (sourl + "search?q=" + a)
+        hdr = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib2.Request(site,headers=hdr)
+        page = urllib2.urlopen(req)
+        soq = page.readlines()
+        for line in soq:
+            if "Q:" in line:
+                message += line.rstrip('\n')
+                break
+        for line in soq:
+            if found:
+              message += re.sub('<.*>', '', line).rstrip('\n')
+              break
+            if "excerpt" in line:
+                found = True 
+        return message.rstrip('\n')
+
 
 def parsemsg(msg):
     try:
@@ -87,6 +112,11 @@ def parsemsg(msg):
                     s.send("privmsg #linuxmasterrace :" + distro("") + '\n')
                 else:
                     s.send("privmsg #linuxmasterrace :" + distro(cmd[1]) + '\n')
+            if cmd[0] == 'so':
+                if len(cmd) == 1:
+                    s.send("privmsg " + info[2] + " :" + stackoverflow("") + '\n')
+                else:
+                    s.send("privmsg " + info[2] + " :" + stackoverflow(cmd[1]) + '\n')
             if cmd[0] == 'peasantry':
                 s.send("privmsg #linuxmasterrace :bite my shiny gnu ass!" + '\n')
             if cmd[0] == 'linus':
