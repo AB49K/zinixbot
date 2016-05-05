@@ -136,7 +136,7 @@ def parsemsg(msg):
             if cmd[0] == 'shrug':
                 s.send("privmsg " + info[2] + " :¯\_(ツ)_/¯" + '\n')
             
-	     if cmd[0].lower() == 'rtfm':
+	    if cmd[0].lower() == 'rtfm':
                 s.send("privmsg " + info[2] + " :Read The " + f_words[randint(0,7)] + " Manual, you noob: https://wiki.archlinux.org/" + '\n')
 
 	     if cmd[0] == 'rolecall':
