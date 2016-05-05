@@ -139,7 +139,7 @@ def parsemsg(msg):
 	    if cmd[0].lower() == 'rtfm':
                 s.send("privmsg " + info[2] + " :Read The " + f_words[randint(0,7)] + " Manual, you noob: https://wiki.archlinux.org/" + '\n')
 
-	     if cmd[0] == 'rolecall':
+	    if cmd[0] == 'rolecall':
                 s.send("privmsg " + info[2] + " :Install Gentoo!" + '\n')
             if cmd[0] == 'aids':
                 s.send("privmsg " + info[2] +
