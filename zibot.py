@@ -95,8 +95,6 @@ def parsemsg(msg):
                    info[2] + " :ARCHARCHARCHARCH AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARCH" + '\n')
         if msgpart[0] == '.':  # Treat all messages starting with '`' as command
             cmd = msgpart[1:].split(' ')
-	    if cmd[0] == 'rtfm':
-		s.send("privmsg " + info[2] + " :https://wiki.archlinux.org" + '\n')
             if cmd[0] == 'test':
                 s.send("privmsg " + info[2] + " :hello world!" + '\n')
             if cmd[0] == 'highfive':
