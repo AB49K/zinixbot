@@ -7,6 +7,8 @@ import time
 import re
 import random
 import urllib2
+from random import randint
+
 
 global rswitch
 rswitch = True
