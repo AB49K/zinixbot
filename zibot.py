@@ -13,13 +13,28 @@ from random import randint
 global rswitch
 rswitch = True
 i = 0
-HOST = sys.argv[2]  # host server
-PORT = 6667
-NICK = sys.argv[3]
-IDENT = sys.argv[3]
-REALNAME = sys.argv[3]
+args=sys.argv
 OWNER = 'zinn'  # the person who owns this
 CHANNELINIT = '#linuxmasterrace'
+
+
+for i in args: #this allows you to pass the options in any order. example: python zibot.py host=irc.snoonet.org nick=zibot pass=<IRC network pass>
+	i=i.split('=')
+	if i[0].lower()=='host':
+		HOST=i[1]
+	if i[0].lower()=='nick':
+		NICK=i[1]
+		IDENT=i[1]
+		REALNAME=i[1]		
+	if i[0].lower()=='channelinit':
+		CHANNELINIT=i[1]
+	if i[0].lower()=='pass':
+		PASS=i[1]
+PORT = 6667
+
+
+
+
 readbuffer = ''
 rekt = ['Rekt', 'Really Rekt', 'Tyrannosaurus Rekt', 'Cash4Rekt.com', 'Grapes of Rekt', 'Ship Rekt', 'Rekt markes the spot', 'Caught rekt handed', 'The Rekt Side Story', 'Singin\' In The Rekt', 'Painting The Roses Rekt', 'Rekt Van Winkle', 'Parks and Rekt', 'Lord of the Rekts: The Reking of the King', 'Star Trekt', 'The Rekt Prince of Bel-Air', 'A Game of Rekt', 'Rektflix', 'Rekt it like it\'s hot', 'RektBox 360', 'The Rekt-men', 'School Of Rekt', 'I am Fire, I am Rekt', 'Rekt and Roll', 'Professor Rekt', 'Catcher in the Rekt', 'Rekt-22', 'Harry Potter: The Half-Rekt Prince', 'Great Rektspectations', 'Paper Scissors Rekt', 'RektCraft', 'Grand Rekt Auto V', 'Call of Rekt: Modern Reking 2', 'Legend Of Zelda: Ocarina of Rekt', 'Rekt It Ralph', 'Left 4 Rekt', 'Pokemon: Fire Rekt',
         'The Shawshank Rektemption', 'The Rektfather', 'The Rekt Knight', 'Fiddler on the Rekt', 'The Rekt Files', 'The Good, the Bad, and The Rekt', 'Forrekt Gump', 'The Silence of the Rekts', 'The Green Rekt', 'Gladirekt', 'Spirekted Away', 'Terminator 2: Rektment Day', 'The Rekt Knight Rises', 'The Rekt King', 'REKT-E', 'Citizen Rekt', 'Requiem for a Rekt', 'REKT TO REKT ass to ass', 'Star Wars: Episode VI - Return of the Rekt', 'Braverekt', 'Batrekt Begins', '2001: A Rekt Odyssey', 'The Wolf of Rekt Street', 'Rekt\'s Labyrinth', '12 Years a Rekt', 'Gravirekt', 'Finding Rekt', 'The Arekters', 'There Will Be Rekt', 'Christopher Rektellston', 'Hachi: A Rekt Tale', 'The Rekt Ultimatum', 'Shrekt', 'Rektal Exam', 'Rektium for a Dream', 'The Hunt for Rekt October', 'Oedipus rekt']
@@ -195,14 +210,14 @@ while 1:
     for item in line:
         if item.find('Welcome') != -1:  # welcome message
             print('you can do it')
-            s.send('privmsg ' + 'NickServ' + ' :IDENTIFY ' + sys.argv[1] + '\r\n')
+            s.send('privmsg ' + 'NickServ' + ' :IDENTIFY ' + PASS + '\r\n')
             s.send('JOIN ' + CHANNELINIT + '\n')  # joins channel
             #s.send('USER '+ ""  +' '+HOST+' bla :'+REALNAME+'\n')
             s.send('NICK ' + "" + '\n')
             s.send('JOIN #lmrdungeonworld'+'\n')
             s.send('JOIN #ayyylmao'+'\n')
             s.send('JOIN #secretlinuxchannel'+'\n')
-            s.send('NICK '+ sys.argv[4] +'\n')
+            s.send('NICK '+ NICK +'\n')
 
         if item.find('PRIVMSG') != -1:  # calls a parsing function
             parsemsg(item)
